@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>AlgoAssist</title>
+    <!-- Tailwind CDN for quick styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* small quick theme overrides for a premium look */
+      :root{
+        --accent-1: #6d28d9;
+        --accent-2: #06b6d4;
+        --card-bg: rgba(255,255,255,0.8);
+      }
+      .glass {
+        background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6));
+        backdrop-filter: blur(6px);
+      }
+    </style>
+  </head>
+  <body class="bg-gradient-to-b from-slate-100 to-slate-50 min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
