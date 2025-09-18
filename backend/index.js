@@ -42,7 +42,6 @@ app.get('/api/history', (req, res) => {
     res.json([]); 
 });
 
-const cors = require('cors');
 // ...
 const corsOptions = {
   origin: 'https://alqoassist.onrender.com'
