@@ -9,12 +9,12 @@ export default function History({ onSelect }) {
 
   async function fetchHistory() {
     try {
-      const res = await fetch('http://localhost:5000/api/history');
-      const data = await res.json();
-      setItems(data || []);
+      const res = await fetch('https://algoassist-backend-b9ip.onrender.com/api/history');
+    const data = await res.json();
+    setItems(data || []);
     } catch (err) {
-      console.error(err);
-    }
+    console.error(err);
+  }
   }
 
   return (
