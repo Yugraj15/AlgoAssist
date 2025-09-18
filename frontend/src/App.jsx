@@ -12,7 +12,7 @@ export default function App() {
   const analyze = async (code, mode) => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api', {
+      const res = await fetch('https://your-backend-name.onrender.com/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code, mode })

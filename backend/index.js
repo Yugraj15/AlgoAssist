@@ -41,3 +41,10 @@ app.get('/api/history', (req, res) => {
     // In the future, this is where you would get data from a database.
     res.json([]); 
 });
+
+const cors = require('cors');
+// ...
+const corsOptions = {
+  origin: 'https://alqoassist.onrender.com'
+};
+app.use(cors(corsOptions));
