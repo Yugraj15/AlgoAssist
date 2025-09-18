@@ -12,7 +12,7 @@ export default function App() {
   const analyze = async (code, mode) => {
   setLoading(true);
   try {
-    const res = await fetch('https://algoassist-backend-b9ip.onrender.com/analyze', {
+    const res = await fetch('https://algoassist-backend-b9ip.onrender.com/api/analyze', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ code, mode })
