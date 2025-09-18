@@ -10,22 +10,22 @@ export default function App() {
   const [loading, setLoading] = useState(false);
 
   const analyze = async (code, mode) => {
-    setLoading(true);
-    try {
-      const res = await fetch('https://algoassist-backend-b9ip.onrender.com', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code, mode })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Server error');
-      setResult(data);
-    } catch (err) {
-      alert(err.message || 'Error');
-    } finally {
-      setLoading(false);
-    }
-  };
+  setLoading(true);
+  try {
+    const res = await fetch('https://algoassist-backend-b9ip.onrender.com/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code, mode })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Server error');
+    setResult(data);
+  } catch (err) {
+    alert(err.message || 'Error');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     // min-h-screen ensures it takes full height, no max-w- to fill width
