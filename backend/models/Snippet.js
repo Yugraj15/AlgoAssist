@@ -1,11 +1,15 @@
+// models/Snippet.js
 const mongoose = require('mongoose');
 
-const SnippetSchema = new mongoose.Schema({
+const snippetSchema = new mongoose.Schema({
   code: { type: String, required: true },
-  mode: { type: String, required: true }, // explain | debug | analyze
-  algorithm: { type: String },
-  aiResponse: { type: Object }, // store structured AI response
-  createdAt: { type: Date, default: Date.now }
+  mode: { type: String, required: true },
+  algorithm: { type: String, required: false },
+  aiResponse: { type: mongoose.Schema.Types.Mixed, required: true },
+}, {
+  timestamps: true,
 });
 
-module.exports = mongoose.model('Snippet', SnippetSchema);
+const Snippet = mongoose.model('Snippet', snippetSchema);
+
+module.exports = Snippet;

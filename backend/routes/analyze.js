@@ -54,21 +54,6 @@ ${code}
   }
 }
 
-function tryParseJSON(text) {
-  if (!text) return { raw: text };
-  try {
-    const first = text.indexOf("{");
-    const last = text.lastIndexOf("}");
-    if (first !== -1 && last !== -1 && last > first) {
-      const js = text.slice(first, last + 1);
-      return JSON.parse(js);
-    }
-    return { raw: text };
-  } catch (err) {
-    return { raw: text };
-  }
-}
-
 // POST /api/analyze
 router.post("/", async (req, res) => {
   try {
@@ -78,12 +63,16 @@ router.post("/", async (req, res) => {
     }
 
     const prompt = createPrompt(code, mode);
-
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const result = await model.generateContent(prompt);
-    const rawText = result.response.text();
 
-    const parsed = tryParseJSON(rawText);
+    const result = await model.generateContent({
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      generationConfig: {
+        responseMimeType: "application/json",
+      },
+    });
+
+    const parsed = JSON.parse(result.response.text());
 
     const algorithm = parsed.algorithm || null;
 
@@ -92,9 +81,10 @@ router.post("/", async (req, res) => {
       mode,
       algorithm,
       aiResponse: parsed,
+      raw: result.response.text(),
     });
 
-    return res.json({ id: doc._id, code, mode, algorithm, aiResponse: parsed, raw: rawText });
+    return res.json({ id: doc._id, code, mode, algorithm, aiResponse: parsed, raw: result.response.text() });
   } catch (err) {
     console.error("Analyze error", err);
     return res.status(500).json({ error: "Server error", details: err.message });
