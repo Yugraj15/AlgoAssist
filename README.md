@@ -1,17 +1,16 @@
-# AlgoAssist (Full MERN + OpenAI demo)
-## Contents
-- backend/  -> Express server (calls OpenAI if OPENAI_API_KEY is provided, otherwise mock responses)
-- frontend/ -> Vite React frontend (Tailwind CDN used for styling)
-## Quick start
-1. Extract the zip and open in VS Code.
-2. Start MongoDB (e.g., `mongod --dbpath /path/to/db` or use MongoDB Atlas).
-3. Backend:
-   - cd backend
-   - npm install
-   - copy .env.example to .env and set OPENAI_API_KEY if you have one.
-   - npm start
-4. Frontend:
-   - cd frontend
-   - npm install
-   - npm run dev
-5. Open the frontend (Vite will show the URL, usually http://localhost:5173).
+AlgoAssist – AI-Powered Code & Algorithm Helper
+AlgoAssist is a full-stack MERN web application that integrates AI to help developers analyze, debug, and understand code snippets. It also detects algorithms and provides pseudocode, time/space complexity insights, and stores query history for future reference.
+
+Features
+-Code Explanation – Paste any code snippet and get a clear AI-generated explanation.
+-Debugging Assistance – Identify potential issues in your code with AI help.
+-Algorithm Detection – Automatically detects algorithms (Sorting, Graph, DP, etc.).
+-Complexity Analysis – Get time & space complexity for detected algorithms.
+-History Tracking – Stores your past queries in MongoDB for easy retrieval.
+-Modern UI – Built with React + Tailwind for a clean, premium look.
+
+Tech Stack
+-Frontend: React, Tailwind CSS
+-Backend: Node.js, Express.js
+-Database: MongoDB
+-AI Integration: Gemini API
